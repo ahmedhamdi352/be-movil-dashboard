@@ -1,0 +1,95 @@
+
+@import '~antd/dist/antd.css';
+
+
+.menu-style {
+
+  height: 100vh;
+  width: 200px;
+  position: fixed;
+  }
+.App {
+  display: flex;
+  justify-content: center;
+}
+
+label {
+  font-weight: bold;
+  display: flex;
+  margin-bottom: 5px;
+}
+
+input + label {
+  font-weight: bold;
+  display: inline-flex;
+  margin-right: 20px;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+textarea,
+select {
+  display: block;
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  /* margin-bottom: 20px; */
+}
+
+.form-control {
+  margin-bottom: 20px;
+  width: 100%;
+
+}
+
+.error {
+  color: red;
+}
+.form{
+  display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+    width: 100%;
+}
+
+.LogContainer{
+  width: 50%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 7.5px;
+  box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.16);
+  border: 1px solid #f6f6f6;
+  position: absolute;
+  top: 25vh;
+  left: 36vw;
+  top: 40%;
+  left: 50%;
+  justify-items: center;
+  align-items: center;
+  background: aliceblue;
+  transform: translate(-50%,-50%);
+
+}
+.form-btn{
+  padding: 10px;
+  width: 25%;
+  border-radius: 5px;
+  background: #3176cb;
+  color: #ffff;
+  border: 0;
+  margin-top: 10%;
+}
+.Text{
+  display: flex;
+  justify-content: center;
+}

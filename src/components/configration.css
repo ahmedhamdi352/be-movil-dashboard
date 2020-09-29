@@ -1,0 +1,26 @@
+/* .form-container{
+    display: flex;
+    justify-content: center;
+}
+.form{
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    margin: 15px;
+    width: 50%;
+}
+.form-control {
+    margin-bottom: 20px;
+    width: 100%;
+    margin-right: 35px;
+}
+.form-btn{
+    padding: 8px;
+    width: 30%;
+    border-radius: 5px;
+    background: #3176cb;
+    color: #ffff;
+    border: 0;
+    /* margin-bottom: 15px; */
