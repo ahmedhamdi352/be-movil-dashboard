@@ -26,7 +26,9 @@ function LoginForm ({setCurrentUser,history}) {
   
   const initialValues = {
     email: 'khaledzaki@home.com',
-    password: 'khaled39052159'
+    password: 'khaled39052159',
+    first_name:'as',
+    last_name:'sa'
   }
 
 
@@ -34,17 +36,18 @@ function LoginForm ({setCurrentUser,history}) {
     email: Yup.string()
       .email('Invalid email format')
       .required('Required'),
-    password: Yup.string().required('Required')
+    password: Yup.string().required('Required'),
+    first_name: Yup.string().required('Required'),
+    last_name: Yup.string().required('Required')
   })
 
   const onSubmit = values => {
     console.log('Form data', values)
-    return axios.post('http://10.1.1.46:8000/api/token/',values)
+    return axios.post('http://10.1.1.46:8000/adminpanel/user/',values)
     .then(({data})=>{
       console.log(data)
-      setCurrentUser(data.access)
-      history.push('/home') 
-      localStorage.setItem('tk', data.access);
+    //   setCurrentUser(data.access)
+      history.push('/') 
     })
 
     .catch(err=>{
@@ -65,9 +68,20 @@ function LoginForm ({setCurrentUser,history}) {
         return (
          
           <Form className='form'>
+              <FormikControl
+                control='input'
+                type='text'
+                label='First Name'
+                name='first_name'
+              />
             <FormikControl
               control='input'
-              // control='chakraInput'
+              type='text'
+              label='Last Name'
+              name='last_name'
+            />
+            <FormikControl
+              control='input'
               type='email'
               label='Email'
               name='email'
@@ -78,13 +92,12 @@ function LoginForm ({setCurrentUser,history}) {
               label='Password'
               name='password'
             />
-            <button type='submit' disabled={!formik.isValid} className='form-btn'>Login</button>
+            <button type='submit' disabled={!formik.isValid} className='form-btn'>sign Up</button>
           </Form>
          
         )
       }}
     </Formik>
-    <p onClick={()=>history.push('signup')}>sign Up</p>
     </div>
   )
 }

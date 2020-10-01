@@ -15,8 +15,20 @@ const Adds=({setCurrentData,addData, history, setRowData})=>{
 
     const columns = [
         {
-          title: 'Name',
-          dataIndex: 'name',
+          title: 'First Name',
+          dataIndex: 'firstname',
+          key: 'name',
+          render: text => <a>{text}</a>,
+        },
+        {
+          title: 'Last Name',
+          dataIndex: 'lastname',
+          key: 'name',
+          render: text => <a>{text}</a>,
+        },
+        {
+          title: 'Created at',
+          dataIndex: 'created_at',
           key: 'name',
           render: text => <a>{text}</a>,
         },
@@ -99,7 +111,7 @@ const handelSearch = (value)=>{
             console.error(err);
           }
         };
-        fetchData();
+        // fetchData();
     
       },[])
 
