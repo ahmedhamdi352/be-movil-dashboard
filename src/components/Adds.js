@@ -1,65 +1,88 @@
 import { Table, Modal, Space, Button,Input  } from 'antd';
-import {EditTwoTone, DeleteTwoTone} from '@ant-design/icons'
+import {CheckOutlined , CloseOutlined } from '@ant-design/icons'
 import React,{useState, useEffect} from 'react'
 import axios from 'axios';
 import {SERVER_URL} from '../config/config';
 import {filter} from 'lodash'
 import AddActionType from "../redux/adds/add.types"
 import { connect } from 'react-redux'
+import { BlobProvider,pdf } from "@react-pdf/renderer";
+import {Quixote} from './pdf'
+import moment from "moment";
+import * as Actions from '../redux/user/user.actions'
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const Adds=({setCurrentData,addData, history, setRowData})=>{
+  const dispatch= useDispatch()
+
+  const counter = useSelector(state => state.user.config);
     const [editRecord,seteditRecord]=useState(false)
     // const [recordData,serRecordData]=useState({})
     const [dataRecord,setDateRecord]=useState({})
     const [visible,setVisble]=useState(false)
+    const [Reload,setReload]=useState(true)
+
 
     const columns = [
         {
           title: 'First Name',
           dataIndex: 'firstname',
           key: 'name',
-          render: text => <a>{text}</a>,
+          render: text => <p>{text}</p>,
         },
         {
           title: 'Last Name',
           dataIndex: 'lastname',
           key: 'name',
-          render: text => <a>{text}</a>,
+          render: text => <p>{text}</p>,
         },
         {
           title: 'Created at',
           dataIndex: 'created_at',
           key: 'name',
-          render: text => <a>{text}</a>,
+          render: text => moment(text).format("l"),
         },
       
         {
           title: 'User PDF',
           dataIndex: 'matching_web',
           key: 'matching_web',
+          render: (text,record) =><BlobProvider document={<Quixote data={record} />}>
+          {({ blob, url, loading, error }) => {
+            console.log(url)
+       
+          return   (   <a  href={url} target="_balck"  
+                   style={{width:'180px',padding: '8px',marginRight:'20px'}}
+                   className='btn_print'
+                   type='submit'
+                   variant="outlined" 
+                 //   color="#000000"
+                   >
+                      <p className='text_print'>PDF</p>
+                 </a>
+          )
+          }}
+        </BlobProvider>,
         },
         
         {
           title: 'Action',
           key: 'action',
           render: (record) => (
-            <Space size="middle">
-                <EditTwoTone onClick={()=>handelEdit(record)}/>
-                <DeleteTwoTone onClick={()=>handeldelete(record)}/>
+            <Space size="large">
+                <CheckOutlined onClick={()=>handelEdit(record)} style={{color:'green'}}/>
+                <CloseOutlined onClick={()=>handeldelete(record)} style={{color:'red'}}/>
             </Space>
           ),
         },
       ];
 const handelEdit = (d)=>{
 
-history.push('/edit')
-setRowData(d);
-    // setDateRecord(d)
-    // seteditRecord(true)
+console.log(d)
 }
  const handeldelete=(d)=>{
-    setVisble(true)
-    setDateRecord(d)
+
     console.log(d)
 }
 
@@ -103,15 +126,16 @@ const handelSearch = (value)=>{
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const data = await axios.get(`${SERVER_URL}/api/adds/`)
-           console.log(data.data)
+            const data = await axios.get(`${SERVER_URL}api/wizardlist/`)
+           console.log(data)
            setCurrentData(data.data)
            
           } catch (err) {
             console.error(err);
           }
         };
-        // fetchData();
+        fetchData();
+       
     
       },[])
 

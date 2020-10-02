@@ -41,8 +41,10 @@ class SiderDemo extends React.Component {
   }
   logout=()=>{
     localStorage.removeItem('tk');
-    this.props.history.push('/')
     this.props.setCurrentUser(null)
+    this.props.history.push('/')
+    window.location.reload(false);
+
 }
 
   render() {

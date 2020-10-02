@@ -62,32 +62,40 @@ select {
 }
 
 .LogContainer{
-  width: 50%;
-  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #ffffff;
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  border-radius: 7.5px;
-  box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.16);
-  border: 1px solid #f6f6f6;
-  position: absolute;
-  top: 25vh;
-  left: 36vw;
-  top: 40%;
-  left: 50%;
-  justify-items: center;
+  justify-content: center;
   align-items: center;
-  background: aliceblue;
-  transform: translate(-50%,-50%);
+  margin-top: 10%;
 
 }
+.loginRoot{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    margin-top: 40px;
+}
+.imgcontiner{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .form-btn{
-  padding: 10px;
-  width: 25%;
+  padding: 5px;
+  width: 60%;
   border-radius: 5px;
-  background: #3176cb;
+  background-color: red;
   color: #ffff;
   border: 0;
   margin-top: 10%;
+  /* border: solid 1px #8b8b8b; */
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 }
 .Text{
   display: flex;

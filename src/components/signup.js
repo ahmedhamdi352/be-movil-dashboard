@@ -43,7 +43,7 @@ function LoginForm ({setCurrentUser,history}) {
 
   const onSubmit = values => {
     console.log('Form data', values)
-    return axios.post('http://10.1.1.46:8000/adminpanel/user/',values)
+    return axios.post(`${SERVER_URL}/adminpanel/user/`,values)
     .then(({data})=>{
       console.log(data)
     //   setCurrentUser(data.access)

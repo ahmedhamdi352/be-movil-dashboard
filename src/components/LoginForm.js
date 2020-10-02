@@ -9,6 +9,9 @@ import { connect } from "react-redux";
 import UserActionsTypes from "../redux/user/user.types"
 import Alert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
+import logo1 from '../assest/images/Group5216@2x.png'
+import logo2 from '../assest/images/Group5032@2x.png'
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,21 +42,30 @@ function LoginForm ({setCurrentUser,history}) {
 
   const onSubmit = values => {
     console.log('Form data', values)
-    return axios.post('http://10.1.1.46:8000/api/token/',values)
-    .then(({data})=>{
-      console.log(data)
-      setCurrentUser(data.access)
-      history.push('/home') 
-      localStorage.setItem('tk', data.access);
-    })
-
-    .catch(err=>{
-      setError(true)
-      setTimeout(()=>setError(false),2000)
-   })
+    // return axios.post(`${SERVER_URL}api/token/`,values)
+    // .then(({data})=>{
+    //   console.log(data)
+    //   history.push('/home') 
+    //   localStorage.setItem('tk', data.access);
+    // })
+    
+    // .catch(err=>{
+    //   setError(true)
+    //   setTimeout(()=>setError(false),2000)
+    // })
+    localStorage.setItem('tk', 'dsd')
+    history.push('/home')
+    setCurrentUser({"user":"ahmed"})
   }
 
   return (
+    <div className='loginRoot'>
+      <div className='imgcontiner'>
+        <img src={logo1} style={{marginRight:'10px',maxWidth:'20%'}}/>
+        <img src={logo2} style={{marginLeft:'10px',maxWidth:'60%'}}/>
+      </div>
+
+   
     <div className='LogContainer'>
     {Error&&<div className={classes.root}><Alert severity="error">Invalid Credentials</Alert></div>}
     <Formik
@@ -84,7 +96,8 @@ function LoginForm ({setCurrentUser,history}) {
         )
       }}
     </Formik>
-    <p onClick={()=>history.push('signup')}>sign Up</p>
+    {/* <p onClick={()=>history.push('signup')}>sign Up</p> */}
+    </div>
     </div>
   )
 }
