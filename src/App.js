@@ -60,7 +60,8 @@ function App ({currentUser}) {
        <Switch>
          {
            currentUser|| tk ? <div>
-             <Route  path="/home" exact component={MenuComponent} />
+             <Route  path="/home"  component={MenuComponent} />
+             <Route path="/"  component={LoginForm} />
 
            </div>
            :<Route path="/"  component={LoginForm} />
